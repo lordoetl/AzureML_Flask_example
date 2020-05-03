@@ -1,0 +1,13 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h3>{{ title }}</h3>
+
+{{ result|safe }}
+
+<h3>Snapshot from AzureML interface</h3>
+This was implemented using Azure ML Studio.<br /><br />
+<img src="/static/images/AzureML.png" />
+
+{% endblock %}

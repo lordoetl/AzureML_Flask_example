@@ -1,0 +1,21 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<h2>Determine the weight of your brain based on the it's Size</h2>
+<form method=post>
+    <dl>
+        <p>
+            <h3>Size</h3>
+            Enter the size of the brain you wish to get the weight <br/><br/>
+            {{form.title}}
+        </p>
+
+        <p>
+            <h3>Name the Brain (optional)</h3> 
+          You can give a name to the brain you are "weighing", if you like.<br /><br />
+            {{form.text}}
+        </p>
+    </dl>
+    <p><input type="submit" value="submit"</p>
+ </form>
+{% endblock %}
