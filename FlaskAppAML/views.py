@@ -8,11 +8,11 @@ import os
 from datetime import datetime
 from flask import render_template, request, redirect
 from FlaskAppAML import app
-
+#testing
 from FlaskAppAML.forms import SubmissionForm
 
-BRAIN_ML_KEY=os.environ.get('API_KEY', "<Your APIkey here>")
-BRAIN_URL = os.environ.get('URL', "<your url here>")
+BRAIN_ML_KEY=os.environ.get('API_KEY', "3ykY3j9WZDYvS0Dvf5VoJ1kA0yVT5HVzT+foY4SzKvD6LJhHoysBjlEQWaOniNQCGqsjKrytONq1kdxEWo3Scg==")
+BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/91af20abfc58455182eaaa615d581c59/services/da7cdb9359a443f0abdef36d30ce8f1c/execute?api-version=2.0&details=true")
 # Deployment environment variables defined on Azure (pull in with os.environ)
 
 # Construct the HTTP request header
