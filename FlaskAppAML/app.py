@@ -4,12 +4,24 @@ Routes and views for the flask application.
 import json
 import urllib.request
 import os
+from os import environ
+
+from flask import Flask
+app = Flask(__name__)
+
 
 from datetime import datetime
 from flask import render_template, request, redirect
-from FlaskAppAML import app
+# from FlaskAppAML import app
 #testing
-from FlaskAppAML.forms import SubmissionForm
+# from FlaskAppAML.forms import SubmissionForm
+from wtforms import Form, StringField, TextAreaField, validators
+
+
+class SubmissionForm(Form):
+    title = StringField('Title', [validators.Length(min=2, max=30)])
+    category = StringField('Category', [validators.Length(min=0, max=30)])
+    text = TextAreaField('Text', [validators.Length(min=1, max=500)])
 
 BRAIN_ML_KEY=os.environ.get('API_KEY', "3ykY3j9WZDYvS0Dvf5VoJ1kA0yVT5HVzT+foY4SzKvD6LJhHoysBjlEQWaOniNQCGqsjKrytONq1kdxEWo3Scg==")
 BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/91af20abfc58455182eaaa615d581c59/services/da7cdb9359a443f0abdef36d30ce8f1c/execute?api-version=2.0&details=true")
@@ -21,13 +33,15 @@ BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/w
 HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ BRAIN_ML_KEY)}
 
 # Our main app page/route
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
+def root():
+    return render_template('contact.html')
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     """Renders the home page which is the CNS of the web app currently, nothing pretty."""
 
     form = SubmissionForm(request.form)
-
+    print(form.title.data.lower())
     # Form has been submitted
     if request.method == 'POST' and form.validate():
 
@@ -135,3 +149,7 @@ def do_something_pretty(jsondata):
     #tablestr = 'Cluster assignment: %s<br><br><table border="1"><tr><th>Cluster</th><th>Distance From Center</th></tr>'+ repstr + "</table>"
     #return tablestr % data
     return output
+
+
+if __name__ == '__main__':
+    app.run()

@@ -1,0 +1,5 @@
+Flask==1.1.4
+wtforms==2.1
+requests==2.11.1
+boto3
+zappa
