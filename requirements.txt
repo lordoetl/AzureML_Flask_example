@@ -26,7 +26,7 @@ pypiwin32==223
 python-dateutil==2.8.1
 python-slugify==4.0.1
 pywin32==300
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.25.1
 s3transfer==0.3.6
 semantic-version==2.8.5
