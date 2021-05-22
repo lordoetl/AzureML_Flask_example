@@ -33,9 +33,9 @@ BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/w
 HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ BRAIN_ML_KEY)}
 
 # Our main app page/route
-@app.route('/')
-def root():
-    return render_template('contact.html')
+@app.route('/', methods=['GET', 'POST'])
+# def root():
+#     return render_template('contact.html')
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     """Renders the home page which is the CNS of the web app currently, nothing pretty."""
